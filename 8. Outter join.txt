@@ -1,0 +1,45 @@
+/**Here it will display all left join rows, while setting null in the ones that dont have value
+in inner join there would be no null numbers in last column **/
+SELECT P.name, P.ProductNumber, PS.Name AS ProductSubCategoryName
+FROM Production.Product P
+LEFT OUTER JOIN Production.ProductSubcategory PS
+ON PS.ProductSubcategoryID= p.ProductSubcategoryID
+
+/**Those two are the same ***/
+SELECT P.name, P.ProductNumber, PS.Name AS ProductSubCategoryName
+FROM Production.Product P
+LEFT OUTER JOIN Production.ProductSubcategory PS
+ON PS.ProductSubcategoryID= p.ProductSubcategoryID
+
+SELECT P.name, P.ProductNumber, PS.Name AS ProductSubCategoryName
+FROM Production.ProductSubcategory PS
+RIGHT OUTER JOIN Production.Product P
+ON PS.ProductSubcategoryID= p.ProductSubcategoryID
+
+
+/**Lef outer join + inner join + where + order by **/
+SELECT P.FirstName, P.LastName,
+ SOH.SalesOrderNumber, 
+ SOH.TotalDue AS [Sales ammount],
+ T.Name As TerritoryName
+FROM Sales.SalesOrderHeader SOH
+LEFT OUTER JOIN Sales.SalesPerson SSP
+/**You know you can join those cause?
+ Go to keys , double click on key, 
+ column specification 
+ and check how they are related **/
+ON SSP.BusinessEntityID= SOH.SalesPersonID
+/***3rd ***/
+LEFT OUTER JOIN HumanResources.Employee HRE
+ON HRE.BusinessEntityID= SSP.BusinessEntityID
+/**4th **/
+LEFT OUTER JOIN Person.Person P
+ON P.BusinessEntityID= HRE.BusinessEntityID
+LEFT OUTER JOIN Sales.SalesTerritory T
+ON T.TerritoryID=SOH.TerritoryID
+
+/**WATCH OUT mark specific table! ***/
+WHERE T.Name= 'NorthWest'
+
+/***Order by 4th column ***/
+ORDER BY 4 DESC

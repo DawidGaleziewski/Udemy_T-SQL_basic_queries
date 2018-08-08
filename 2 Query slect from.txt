@@ -1,0 +1,28 @@
+SELECT  FirstName, LastName
+From Person.Person
+
+
+/**** This will only select 500 rows which may be manadatory when working with huge DB****/
+SELECT TOP 500 FirstName, LastName, MiddleName
+From Person.Person
+
+	/**** same but for percent****/
+	SELECT TOP 10 PERCENT FirstName
+	FROM person.Person
+	
+/**** This selects all from table****/
+SELECT *
+FROM person.Person
+
+	/**** Good practice when working with unfamiliar table***/
+	/**** This selects all from table but limits it to 100****/
+	SELECT TOP 100 *
+	FROM person.Person
+	
+/****Read only ****/	
+/****Alias creation with AS [] or ""***/
+
+SELECT TOP 100 
+FirstName AS [Customer First Name] , LastName AS [Customer Last Name]
+FROM person.Person
+

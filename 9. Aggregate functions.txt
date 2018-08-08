@@ -1,0 +1,51 @@
+/*** Select only one highest value from column***/
+SELECT MAX(TotalDue)
+FROM SALES.SalesOrderHeader
+
+SELECT TotalDue
+FROM Sales.SalesOrderHeader
+ORDER BY TotalDue Desc
+
+
+/*** Ssame but with min***/
+SELECT MIN(TotalDue)
+FROM SALES.SalesOrderHeader
+
+SELECT TotalDue
+FROM Sales.SalesOrderHeader
+ORDER BY TotalDue asc
+
+
+/*** count all rows whitout beeing db intensive***/
+SELECT COUNT(*)
+FROM Sales.SalesOrderHeader
+
+/***Number of non NULL values***/
+SELECT COUNT(SalesPersonID)
+FROM Sales.SalesOrderHeader
+
+SELECT COUNT(*)
+FROM sales.SalesOrderHeader
+WHERE SalesPersonID IS NOT NULL
+
+
+/***DISTINCT ***/
+SELECT COUNT(DISTINCT FirstName)
+FROM Person.Person
+
+/***AVG for avarage ***/
+SELECT AVG(TotalDue)
+FROM Sales.SalesOrderHeader
+
+/***SUM ***/
+SELECT SUM(TotalDue)
+FROM Sales.SalesOrderHeader
+
+
+/**where gets executed before slect, this is why you can use it with aggrevation functions **/
+SELECT sum(totaldue)
+FROM Sales.SalesOrderHeader
+WHERE OrderDate Between '1/1/2006' and '12/31/2006'
+
+
+

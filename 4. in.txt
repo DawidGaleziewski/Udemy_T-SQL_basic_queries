@@ -1,0 +1,21 @@
+/***IN operator for listing possible values ***/
+
+SELECT * 
+FROM HumanResources.vEmployee
+WHERE FirstName IN ('Chris', 'Steve', 'Michael', 'Thomas')
+
+
+/***Between  ***/
+
+SELECT * 
+FROM Sales.vStoreWithDemographics
+WHERE AnnualSales BETWEEN 100000 and 2000000
+
+
+/***Wildcards LIKE  %***/
+SELECT *
+FROM HumanResources.vEmployee
+WHERE FirstName LIKE 'Mi%'
+
+Between dates
+and '23/03/2017'

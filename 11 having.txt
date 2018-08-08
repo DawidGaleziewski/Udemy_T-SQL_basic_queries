@@ -1,0 +1,33 @@
+/***having basic syntax- its like where for agr functions***/
+SELECT 
+St.name as [Territory name], sum(TotalDue) as [Total Sales 2006]
+from Sales.SalesOrderHeader SOH
+INNER join sales.SalesTerritory ST
+ON St.TerritoryID= soh.TerritoryID
+where orderdate between '1/1/2006' and '12/31/2006'
+Group by st.name
+Having sum(TotalDue) >4000000
+order by 1
+
+
+/***having basic syntax- its like where for agr functions***/
+SELECT PS.name  as [subcategory name], count(*) as [product count]
+from Production.Product P
+inner join Production.ProductSubcategory ps
+on ps.ProductSubcategoryID= p.ProductSubcategoryID
+group by ps.name
+having count(*) >=15
+
+
+
+select 
+SalesPersonID,
+sum(TotalDue) as [total sales amount],
+count(*) as [Total Sales Count]
+from sales.SalesOrderHeader
+where OrderDate between '1/1/2006' and '12/31/2006'
+and SalesPersonID is not null
+group by SalesPersonID
+having sum(TotalDue) >= 200000
+and count(*) >= 75
+order by 2 desc

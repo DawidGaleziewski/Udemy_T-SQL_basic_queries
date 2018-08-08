@@ -1,0 +1,16 @@
+/******
+Query is connected to db thats why you have to click on db before starting a new qury
+otherwise you may select wrong one
+  ******/
+/****** lteral select statments ******/
+  SELECT 'Dawid','Jan','Galeziewski'
+  
+ /******  mathematical expressions: ******/
+SELECT 4/2 
+SELECT 2+2
+SELECT 3*3
+SELECT 4-3
+SELECT (5*5)-(3*5)
+
+/******
+

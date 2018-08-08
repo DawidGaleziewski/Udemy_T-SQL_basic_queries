@@ -1,0 +1,56 @@
+/***Inner joins ***/
+SELECT P.Name, P.ProductNumber, PS.Name
+FROM Production.Product P
+INNER JOIN Production.ProductSubcategory PS
+ON P.ProductSubcategoryID= PS.ProductSubcategoryID
+
+
+
+/***Inner joins 2***/
+SELECT P.Name, P.ProductNumber, P.ProductSubcategoryID,
+ PS.Name AS [Product Subcategory name]
+FROM Production.Product P
+INNER JOIN Production.ProductSubcategory PS
+ON P.ProductSubcategoryID= PS.ProductSubcategoryID
+
+SELECT * 
+FROM Production.ProductSubcategory
+
+
+/*** Joinig***/
+SELECT 
+PS.Name as  [Product sub categroy name],
+PC.name as [Product category name]
+FROM Production.ProductSubcategory PS
+INNER JOIN Production.Product PC
+ON PS.ProductCategoryID = PC.ProductSubcategoryID
+
+SELECT *
+FROM Production.ProductCategory
+
+
+
+
+/*** Joinig***/
+SELECT P.FirstName, P.LastName, PE.EmailAddress5
+FROM Person.Person P
+INNER JOIN Person.EmailAddress PE
+ON P.BusinessEntityID= PE.BusinessEntityID
+
+
+/*** triple Join***/
+SELECT P.FirstName, P.LastName, PE.EmailAddress, PPH.PhoneNumber 
+FROM Person.Person P
+INNER JOIN Person.EmailAddress PE
+ON P.BusinessEntityID= PE.BusinessEntityID
+INNER JOIN Person.PersonPhone PPH
+ON P.BusinessEntityID=PPH.BusinessEntityID
+
+
+/*** triple Join***/
+SELECT PP.FirstName, PP.LastName, PPS.PasswordHash, PEA.EmailAddress
+FROM Person.Person PP
+INNER JOIN Person.Password PPS
+ON PP.BusinessEntityID= PPS.BusinessEntityID
+INNER JOIN Person.EmailAddress PEA
+ON PP.BusinessEntityID= PEA.BusinessEntityID

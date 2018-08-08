@@ -1,0 +1,65 @@
+/***Order by syntax ***/
+SELECT Column1, Column2,..., ColumnN
+FROM Schemaname.Tablename
+WHERE (Filter Criteria)
+GROUP BY [ColumnName], [Column name]
+ORDER BY ColumnName
+
+
+/***Order by syntax ***/
+SELECt SalesPersonID, SUM(TotalDue) AS [Total Sales]
+FROM Sales.SalesOrderHeader
+/***You have to use agr function with group by ***/
+GROUP BY SalesPersonID
+/***This will group and sum Total sales for each sales person ID ***/
+
+
+SELECT ProductID, 
+SUM(Quantity) AS [Total in Stock],
+/***This will say how many rows have this product id, 
+number of times this id/value appears ***/
+COUNT(*) AS [total locations]
+FROM Production.ProductInventory
+GROUP BY ProductID
+
+
+SELECT TerritoryID, SalesPersonID, SUM(TotalDue) AS [Total sales]
+FROM Sales.SalesOrderHeader
+WHERE OrderDate BETWEEN '1/1/2006' AND '12/31/2006'
+/*** as it creates hierarchy where Territory is higher,
+when sales person is in two territories it will dplicate territories
+***/
+GROUP BY TerritoryID, SalesPersonID
+ORDER BY 1, 2
+
+
+/***Using inner join to enchance the query and get full names of sales persons ***/
+SELECT st.name as [Territory name],
+P.FirstName, p.LastName,
+SUM(TotalDue) AS [Total Sales]
+FROM Sales.SalesOrderHeader SOH
+Inner join Sales.SalesPerson SP
+ON SP.BusinessEntityID=SOH.SalesPersonID
+INNER Join Person.Person P
+ON P.BusinessEntityID=SP.BusinessEntityID
+INNER JOIN Sales.SalesTerritory st
+on st.TerritoryID=SOH.TerritoryID
+WHERE OrderDate BETWEEN '1/1/2006' AND '12/31/2006'
+GROUP BY ST.Name, P.FirstName, P.LastName
+ORDER BY 1, 2
+
+
+/***Concatenation ***/
+SELECT st.name as [Territory name],
+P.FirstName + ' ' + p.LastName as [sales person],
+SUM(TotalDue) AS [Total Sales]
+FROM Sales.SalesOrderHeader SOH
+Inner join Sales.SalesPerson SP
+ON SP.BusinessEntityID=SOH.SalesPersonID
+INNER Join Person.Person P
+ON P.BusinessEntityID=SP.BusinessEntityID
+INNER JOIN Sales.SalesTerritory st
+on st.TerritoryID=SOH.TerritoryID
+WHERE OrderDate BETWEEN '1/1/2006' AND '12/31/2006'
+GROUP BY ST.Name, P.FirstName + ' ' + P.LastName
+ORDER BY 1, 2

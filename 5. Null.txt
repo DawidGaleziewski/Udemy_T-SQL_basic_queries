@@ -1,0 +1,31 @@
+/*** WIldcard in brackets- array of characters to chose from***/
+SELECT *
+FROM HumanResources.vEmployee
+WHERE FirstName LIKE 'D[a,o]n'
+
+
+/*** WIldcard in brackets- array of characters to chose from***/
+SELECT *
+FROM HumanResources.vEmployee
+WHERE FirstName LIKE 'D[a-f, r-z]n'
+
+/*** Carrot ^ wchich is negation***/
+SELECT *
+FROM HumanResources.vEmployee
+WHERE FirstName LIKE 'D[^o]n'
+
+/*** NULL VALUE- nothing
+***/
+SELECT *
+FROM Person.Person
+WHERE MiddleName IS NULL
+
+/*** Not null***/
+SELECT *
+FROM Person.Person
+WHERE MiddleName IS NOT NULL
+
+/*** NULL VALUE- nothing***/
+SELECT *
+FROM HumanResources.vEmployee
+WHERE MiddleName IS NOT NULL AND PhoneNumberType = 'Cell'

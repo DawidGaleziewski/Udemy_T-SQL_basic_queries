@@ -1,0 +1,93 @@
+/***General syntax ***/
+SELECT [Comumn 1], [Column 2], [Column 3]
+FROM [Schema Name].[Table Name]
+WHERE [Column name] [Comparision operator] [Some Value]
+
+/*** Not equal***/
+SELECT ListPrice 
+FROM Production.Product
+WHERE  ListPrice <> 10
+
+/*** equal***/
+SELECT ListPrice 
+FROM Production.Product
+WHERE  ListPrice = 10
+
+
+/*** More***/
+SELECT ListPrice 
+FROM Production.Product
+WHERE  ListPrice > 10
+
+
+
+/*** Less***/
+SELECT ListPrice 
+FROM Production.Product
+WHERE  ListPrice < 10
+
+
+/*** '' for string ***/
+/*** Most db will be case INsensitive***/
+SELECT * 
+FROM HumanResources.vEmployee
+WHERE FirstName = 'Chris'
+
+SELECT * 
+FROM HumanResources.vEmployee
+WHERE FirstName <> 'Chris'
+
+
+/***'1/1/1980' will work as well as long as it has '' ***/
+SELECT * 
+FROM HumanResources.Employee
+WHERE BirthDate < '1-1-1980'
+
+/*** AND operator***/
+SELECT *
+FROM HumanResources.employee
+WHERE BirthDate >= '1/1/1980'
+AND Gender = 'f'
+
+
+/*** AND operator***/
+SELECT *
+FROM HumanResources.Employee
+WHERE MaritalStatus = 's' AND Gender = 'm'
+
+/*** OR operator ***/ 
+SELECT *
+FROM HumanResources.Employee
+WHERE MaritalStatus = 'S' OR Gender = 'M'
+
+
+/*** AND with OR conjuction***/
+SELECT * 
+FROM HumanResources.Employee
+WHERE MaritalStatus= 's' AND Gender= 'm' OR OrganizationLevel = '4'
+
+this is executed as:
+
+SELECT * 
+FROM HumanResources.Employee
+/***predicate logic in boolean expressions ***/
+WHERE (MaritalStatus= 's' AND Gender= 'm') OR OrganizationLevel = '4'
+
+/*** Changing logic on the statment***/
+SELECT * 
+FROM HumanResources.Employee
+WHERE (MaritalStatus= 's' AND Gender= 'm')
+ OR OrganizationLevel = '4'
+
+ 
+ /*** TO***/
+ /*** AND with OR conjuction***/
+SELECT * 
+FROM HumanResources.Employee
+WHERE (MaritalStatus= 's' AND Gender= 'm')
+ OR OrganizationLevel = '4'
+ 
+ 
+ /***Truth tables on sql can help understand conjuctions ***/
+ 
+ /***() can be used to use some boolean expression first ***/

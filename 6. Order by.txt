@@ -1,0 +1,66 @@
+/***ORDER BY  ***/
+SELECT Column1, Column2,.. ColumnN
+FROM SchemaName.TableName
+WHERE ColumnName [operator] criteria
+
+
+ORDER BY ColumnName, ColumnOrdinal, ColumnAlias [asc/desc]
+
+/***ORDER BY  ***/
+SELECT Column1, Column2,.. ColumnN
+FROM SchemaName.TableName
+WHERE ColumnName [operator] criteria
+
+
+ORDER BY ColumnName, ColumnOrdinal, ColumnAlias [asc/desc]
+
+/***Specify by which order column appears will be sorted
+Example if you put 2, it will be sorted by 2nd column***/
+SELECT FirstName, LastName
+FROM Sales.vIndividualCustomer
+ORDER BY 2
+
+
+/***Order by alias***/
+SELECT FirstName, LastName AS [Customer Last Name]
+FROM Sales.vIndividualCustomer
+ORDER BY [Customer Last Name]
+
+/*** how you write ***/
+SELECT
+FROM
+WHERE
+GROUP BY
+HAVING
+ORDER BY
+
+/*** How sql reads***/
+FROM
+WHERE
+GROUP BY
+HAVING
+SELECT
+ORDER BY
+
+/***Order by once column and where there is a TIE order by 2nd ***/
+SELECT FirstName, LastName
+FROM Sales.vIndividualCustomer
+ORDER BY LastName ASC, FirstName DESC
+
+/***Order by once column and where there is a TIE order by 2nd ***/
+SELECT FirstName, LastName
+FROM Sales.vIndividualCustomer
+ORDER BY 2,FirstName
+
+
+/***Order by once column and where there is a TIE order by 2nd ***/
+SELECT FirstName, LastName, SalesQuota
+FROM Sales.vSalesPerson
+WHERE SalesQuota >= 25000
+ORDER BY SalesQuota
+
+
+
+
+
+
